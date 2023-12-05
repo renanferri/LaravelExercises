@@ -19,6 +19,7 @@ class ContactResource extends JsonResource
             'name' => $this->name,
             'email' => $this->email,
             'whatsapp' => $this->whatsapp,
+            'person_id' => $this->person_id,
             'person' => new PersonResource($this->person),
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
