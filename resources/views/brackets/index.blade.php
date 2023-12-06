@@ -53,7 +53,7 @@
                     <p><b>Exemplos:</b></p>
                     <ul>
                         <li>(){}[] é válido</li>
-                        <li>{()}](){} é válido</li>
+                        <li>[{()}](){} é válido</li>
                         <li>[]{() não é válido</li>
                         <li>[{)] não é válido</li>
                     </ul>
