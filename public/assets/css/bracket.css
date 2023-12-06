@@ -49,6 +49,19 @@ main {
     justify-content: center;
 }
 
+.details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.details > ul > li {
+    text-decoration: double;
+    color: #000408;
+    padding: 3px;
+}
+
 ul, li {
     display: flex;
     flex-direction: column;

@@ -22,8 +22,8 @@ class UpdatePersonRequest extends FormRequest
     public function rules(): array
     {
         return [            
-            'name' => 'required|max:255',
-            'birth_date' => 'required|date|date_format:Y-m-d'
+            'name' => 'sometimes|required|max:255',
+            'birth_date' => 'sometimes|required|date|date_format:Y-m-d'
         ];
     }
 }

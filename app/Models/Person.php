@@ -19,7 +19,7 @@ class Person extends Model
 
     protected $casts = [
         'name' => 'string',
-        'birth_date' => 'datetime',
+        'birth_date' => 'string',
     ];
 
     public function contacts() : HasMany

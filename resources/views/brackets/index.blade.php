@@ -43,7 +43,23 @@
                         {{session('warning')}}
                     </div>
                 @endif
+                <div class="details">
+                    <p><b>Dizemos que uma sequência de colchetes é válida se as seguintes condições forem atendidas:</b></p>
+                    <ul>
+                        <li>Não contém colchetes sem correspondência.</li>
+                        <li>O subconjunto de colchetes dentro dos limites de um par de colchetes correspondente é também um par de colchetes.</li>
+                        <li></li>
+                    </ul>
+                    <p><b>Exemplos:</b></p>
+                    <ul>
+                        <li>(){}[] é válido</li>
+                        <li>{()}](){} é válido</li>
+                        <li>[]{() não é válido</li>
+                        <li>[{)] não é válido</li>
+                    </ul>
+                </div>
             </form>
+           
         </div>
     </main>
     <footer>
