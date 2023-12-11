@@ -21,7 +21,7 @@ header {
     display: flex;  
     flex-direction: column;
     justify-content: center;    
-    height: 100px;
+    height: 50px;
     width: 100vw;
     
 }
@@ -54,13 +54,21 @@ main {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    font-size: 12px;
+}
+
+.details > p {    
+    font-size: 14px;
 }
 
 .details > ul > li {
     text-decoration: double;
     color: #000408;
     padding: 3px;
+    font-size: 12px;
 }
+
+
 
 ul, li {
     display: flex;
@@ -84,7 +92,7 @@ i {
 }
 
 .warning {
-    color: red
+    color: red;
     font-size: 16px;
     font-weight: bold;
 }
@@ -153,7 +161,7 @@ footer {
     display: flex;  
     flex-direction: column;
     justify-content: center;    
-    height: 100px;
+    height: 50px;
     width: 100vw;
 }
 

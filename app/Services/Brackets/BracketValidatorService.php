@@ -2,48 +2,43 @@
 
 namespace App\Services\Brackets;
 
+use function PHPUnit\Framework\isEmpty;
+
 class BracketValidatorService
 {
     public function run(string $brackets) : bool
     {        
-        $bracketCollection = collect(str_split($brackets));
+        $sequenceCollection = collect(str_split($brackets));
         
         // ODD ELEMENT CAN NOT BE COMBINED
-        if ($bracketCollection->count() % 2 !== 0)            
+        if ($sequenceCollection->count() % 2 !== 0)            
             return false;
-        
-        // COUNT THE TYPE OF EACH OPENNING AND CLOSING BRACKETS           
-        $open1 = $bracketCollection->filter(function(string $item, int $key) {            
-            return $item === '(';
-        });
 
-        $close1 = $bracketCollection->filter(function(string $item, int $key) {            
-            return $item === ')';
-        });
-
-        $open2 = $bracketCollection->filter(function(string $item, int $key) {            
-            return $item === '[';
-        });
-
-        $close2 = $bracketCollection->filter(function(string $item, int $key) {            
-            return $item === ']';
-        });
-
-        $open3 = $bracketCollection->filter(function(string $item, int $key) {            
-            return $item === '{';
-        });
-
-        $close3 = $bracketCollection->filter(function(string $item, int $key) {            
-            return $item === '}';
-        });
-
-        // IF THE COUNT OF PAIR COMBINED IS VALIDATED
-        if($open1->count() === $close1->count() && $open2->count() === $close2->count() && $open3->count() === $close3->count())
-            return true;
-
-        
-        return false;
-    }
   
+        $stack = collect();
 
+        $referenceElements = collect([
+            ')' => '(',
+            ']' => '[',
+            '}' => '{'
+        ]);
+        
+        $sequenceCollection->each(function(string $item) use ($referenceElements, $stack) {            
+            if ($referenceElements->contains($item)){                
+                // FIND OPENNING AND STACK UP THE ELEMENT
+                $stack->push($item);
+            } else if ($stack->isEmpty() || $referenceElements->get($item) !== $stack->pop()) {       
+                // IF EMPTY NOT MATCHING OR
+                // IF ITEM KEY CORRESPONDENT OF CLOSING ELEMENT NOT MATCH WITH ELEMENT UNSTACKED
+                return false;
+            }
+        });
+
+        // SOME DIRT
+        if (!$stack->isEmpty()) 
+            return false;
+
+        // WHEN STACK IS EMPTY IT IS OK
+        return true;
+    }
 }
